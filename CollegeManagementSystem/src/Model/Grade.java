@@ -4,19 +4,19 @@ public class Grade {
 	private int ID;
 	private Course course;
 	private Class c;
-	private Student=student;
+	private Student student;
 	private double grade;
 	private double max;
 	
 	public Grade() {}
 	
-	    public int getID{
+	    public int getID(){
 	    	return ID;
 	    }
 	    public void setID(int ID) {
 	    	this.ID=ID;
 	    }
-	    public Course getCourse{
+	    public Course getCourse(){
 	    	return course;
 	    }
 	    public void setCourse(Course course) {
@@ -29,7 +29,7 @@ public class Grade {
 	    	this.c=c;
 	    }
 	    public Student getStudent(){
-	    	return Student;
+	    	return student;
 	    }
 	    public void setStudent(Student student) {
 	    	this.student=student;
