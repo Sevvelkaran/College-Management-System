@@ -10,37 +10,37 @@ public class Student {
 	
 	public Student() {}
 	
-	    public int getID{
+	    public int getID(){
 	    	return ID;
 	    }
 	    public void setID(int ID) {
 	    	this.ID=ID;
 	    }
-	    public String getFirstName{
+	    public String getFirstName(){
 	    	return firstName;
 	    }
 	    public void setFirstName(String firstName) {
 	    	this.firstName=firstName;
 	    }
-	    public String getLastName{
-	    	return LastName;
+	    public String getLastName(){
+	    	return lastName;
 	    }
-	    public void setLastName(String LastName) {
+	    public void setLastName(String lastName) {
 	    	this.lastName=lastName;
 	    }
-	    public int getEmail{
+	    public String getEmail() {
 	    	return email;
 	    }
 	    public void setEmail(String email) {
 	    	this.email=email;
 	    }
-	    public String getPhoneNumber{
+	    public String getPhoneNumber(){
 	    	return phoneNumber;
 	    }
 	    public void setPhoneNumber(String phoneNumber) {
 	    	this.phoneNumber=phoneNumber;
 	    }
-	    public String getBirthDate{
+	    public String getBirthDate(){
 	    	return birthDate;
 	    }
 	    public void setBirthDate(String birthDate) {
