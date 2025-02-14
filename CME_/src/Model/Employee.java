@@ -1,7 +1,8 @@
-package Module;
+
+package Model;
 
 public class Employee {
-	private int ID;
+    private int ID;
     private String firstName;
     private String lastName;
     private String email;
@@ -49,7 +50,7 @@ public class Employee {
     public void setBirthDate(String birthDate) {
     	this.birthDate=birthDate;
     }
-    public double salary(){
+    public double getSalary(){
     	return salary;
     }
     public void setSalary(double salary) {
@@ -68,4 +69,3 @@ public class Employee {
     	this.password=password;
     }
 }
-

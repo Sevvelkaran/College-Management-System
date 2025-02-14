@@ -1,4 +1,5 @@
-package Module;
+
+package Model;
 
 public class Grade {
 	private int ID;
@@ -46,4 +47,7 @@ public class Grade {
 	    public void setMax(double max) {
 	    	this.max=max;
 	    }
-}
+
+}	
+	
+	 

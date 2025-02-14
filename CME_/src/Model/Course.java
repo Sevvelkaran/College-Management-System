@@ -1,4 +1,4 @@
-package Module;
+package Model;
 import java.util.*;
 public class Course {
 	
@@ -48,7 +48,7 @@ public class Course {
 		return students;
 	}
 	public void setStudents(ArrayList<Student> students ) {
-		this.students = students
+		this.students = students;
 	}
 	public Employee getProf() {
 		return prof;
