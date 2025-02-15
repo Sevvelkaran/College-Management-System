@@ -6,6 +6,9 @@ public class Department {
 	private String title;
 	public Department() {}
 		
+	public Department(int ID, Database database) {
+		
+	}
 		public int getId() {
 			return ID;
 		}
