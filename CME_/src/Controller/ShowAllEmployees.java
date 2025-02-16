@@ -45,6 +45,12 @@ public class ShowAllEmployees implements Operation {
 			e.print();
 		}
 	}
+
+	@Override
+	public void oper(Database database) {
+		// TODO Auto-generated method stub
+		
+	}
 	
 
 }
