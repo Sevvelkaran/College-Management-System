@@ -19,9 +19,10 @@ public class Employee {
     public Employee(int ID,Database database) {
     	try {
     		setID(ID);
-    		String select="SELECT 'ID'.'FirstName','LastName','Email','PhoneNumber',"
-    	     +"'BirthDate','Salary','Department','Password'"+"FROM 'employees' WHERE 'ID'="+getID()+";";
-    	
+    		String select = "SELECT FirstName, LastName, Email, PhoneNumber, "
+    	              + "BirthDate, Salary, Department, Password "
+    	              + "FROM employees WHERE ID = " + getID() + ";";
+
 			ResultSet rs=database.getStatement().executeQuery(select);
 			rs.next();
 			
@@ -96,11 +97,12 @@ public class Employee {
     public void update(Database database) {
     	try {
 
-    		String update = "UPDATE 'employees' SET 'FirstName'='"+getFirstName()+
-    		"','LastName'='"+getLastName()+"','Email'='"+getEmail()+
-    		"','PhoneNumber'='"+getPhoneNumber()+"','BirthDate'='"+getBirthDate()+
-    		"','Salary'='"+getSalary()+"','Department'='"+getDepartment().getID()+
-    		"','Password' ='"+getPassword()+" 'WHERE 'ID'="+getID()+";";
+    		String update = "UPDATE employees SET FirstName='" + getFirstName() + "', "
+    	              + "LastName='" + getLastName() + "', Email='" + getEmail() + "', "
+    	              + "PhoneNumber='" + getPhoneNumber() + "', BirthDate='" + getBirthDate() + "', "
+    	              + "Salary=" + getSalary() + ", Department=" + getDepartment().getID() + ", "
+    	              + "Password='" + getPassword() + "' WHERE ID=" + getID() + ";";
+
     		database.getStatement().execute(update); 
     		System.out.println("Employee updated successfully");		
 
