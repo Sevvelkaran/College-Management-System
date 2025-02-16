@@ -4,12 +4,13 @@ public class Department {
 
 	private int ID;
 	private String title;
+	
 	public Department() {}
 		
 	public Department(int ID, Database database) {
 		
 	}
-		public int getId() {
+		public int getID() {
 			return ID;
 		}
 		
