@@ -1,14 +1,16 @@
 package Controller;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.Scanner;
 
 
 
 import Model.Database;
+import Model.Employee;
 import Model.Operation;
 
-public class AddNewEmployee implements Operation {
+public class CreateEmployee implements Operation {
 
     public void oper(Database database, Scanner scanner) {
         System.out.println("Enter First Name:");
@@ -42,10 +44,16 @@ public class AddNewEmployee implements Operation {
              confirmPassword = scanner.next(); 
         }
     
-        try {
-        	ResultSet rs = database.getStatement().executeQuery("SELECT COUNT(*)FROM EMPLOYEES ;");
-        	rs.next();
-        	int ID = rs.getInt("COUNT(*)");
+try {
+        	ArrayList<Employee> employees =  new ShowAllEmployees().getAllEmployees(database);
+        	int ID = 0;
+        	if (employees.size()!= 0 ) {
+        		ID = employees.get(employees.size()-1).getID()+1;
+        	}
+        	
+        	 
+//        	
+//        
         	String insert = "INSERT INTO employees "
         		    + "(ID, FirstName, LastName, Email, PhoneNumber, BirthDate, Salary, Department, Password) "
         		    + "VALUES ("

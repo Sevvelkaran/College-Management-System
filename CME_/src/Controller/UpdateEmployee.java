@@ -14,7 +14,7 @@ public class UpdateEmployee implements Operation {
 				System.out.println("Enter user ID(-1 to show all employees):");
 				int userID=scanner.nextInt();
 				while(userID<0) {
-				   new ShowAllEmployees().oper(database,scanner);
+				   new ReadEmployees().oper(database,scanner);
 				   System.out.println("Enter user ID(-1 to show all employees):");
 				   userID=scanner.nextInt();
 			}
@@ -67,7 +67,7 @@ public class UpdateEmployee implements Operation {
 
 				// Ensure valid department selection
 				while (deptID == -2) {
-				    new ShowAllDepartments().oper(database, scanner);
+				    new ReadDepartments().oper(database, scanner);
 				    
 				    System.out.println("Enter Department ID (-1 to keep current, -2 to show all departments again):");
 				    deptID = scanner.nextInt();
