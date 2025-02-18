@@ -1,5 +1,6 @@
 package Controller;
 
+import java.sql.ResultSet;
 import Model.Database;
 import Model.Department;
 import Model.Employee;
@@ -9,12 +10,13 @@ import java.util.Scanner;
 
 public class UpdateEmployee implements Operation {
 
+		@Override
 		public void oper(Database database,Scanner scanner) {
 		
 				System.out.println("Enter user ID(-1 to show all employees):");
 				int userID=scanner.nextInt();
 				while(userID<0) {
-				   new ReadEmployees().oper(database,scanner);
+				   new ShowAllEmployees().oper(database,scanner);
 				   System.out.println("Enter user ID(-1 to show all employees):");
 				   userID=scanner.nextInt();
 			}
@@ -59,33 +61,18 @@ public class UpdateEmployee implements Operation {
 				
 				employee.setPassword(password);
 	       }
-			System.out.println("Enter Department ID (-1 to keep " + 
-				    (employee.getDepartment() != null ? employee.getDepartment().getTitle() : "null") + 
-				    ")\n(-2 to show all departments):");
-
-				int deptID = scanner.nextInt();
-
-				// Ensure valid department selection
-				while (deptID == -2) {
-				    new ReadDepartments().oper(database, scanner);
-				    
-				    System.out.println("Enter Department ID (-1 to keep current, -2 to show all departments again):");
-				    deptID = scanner.nextInt();
+			System.out.println("Enter Department ID(-1 to keep "+employee.getDepartment().getName()+")\n"
+					+"(-2 to show all departments):");
+			int deptID=scanner.nextInt();
+			if(deptID!=-1) {
+				while(deptID==-2){
+					new ShowAllDepartments().oper(database,scanner);
+					deptID=scanner.nextInt();
 				}
-
-				// Update department only if a valid ID is entered
-				if (deptID != -1) {
-				    employee.setDepartment(new Department(deptID, database));
-				}
-
-				employee.update(database);
-
+				employee.setDepartment(new Department(deptID,database));
+			}
+			employee.update(database);
 }
-
-		@Override
-		public void oper(Database database) {
-			// TODO Auto-generated method stub
-			
-		}
 			
 }
+

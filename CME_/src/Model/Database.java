@@ -8,8 +8,8 @@ import java.sql.Statement;
 
 public class Database {
 
-    private String user = "root";
-    private String pass = "Kiot1234@";
+    private String user = "LAKSITHA R";
+    private String pass = "Laks@2004";
     private String url = "jdbc:mysql://localhost:3306/COLLEGE"; // Add port 3306
 
     private Statement statement;
