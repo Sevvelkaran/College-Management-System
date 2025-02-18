@@ -5,5 +5,6 @@
  * 
  */
 module CME_ {
-	requires java.sql;
+    requires java.sql;
+    exports Model;
 }
