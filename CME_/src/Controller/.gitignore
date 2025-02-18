@@ -3,3 +3,10 @@
 /ShowAllDepartments.class
 /ShowAllEmployees.class
 /UpdateEmployee.class
+/CreateEmployee.class
+/CreateStudent.class
+/ReadDepartments.class
+/ReadEmployees.class
+/DeleteEmployee.class
+/UpdateDepartment.class
+/ReadClasses.class

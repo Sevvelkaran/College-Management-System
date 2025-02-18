@@ -51,6 +51,12 @@ public class ReadEmployees implements Operation {
 			return employees;
 			
 		}
+
+		@Override
+		public void oper(Database database) {
+			// TODO Auto-generated method stub
+			
+		}
 	
 
 }

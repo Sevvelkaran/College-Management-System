@@ -7,6 +7,9 @@ public class Class {
 	
 	public Class() {
 	}
+	public Class(int ID,Database database) {
+		
+	}
 	
 		public int getId() {
 			return ID;

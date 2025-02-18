@@ -36,6 +36,12 @@ public class ReadDepartments  implements Operation{
 			
 			return departments;
 		}
+
+		@Override
+		public void oper(Database database) {
+			// TODO Auto-generated method stub
+			
+		}
 	
 
 	
