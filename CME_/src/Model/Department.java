@@ -79,4 +79,9 @@ public class Department {
 				e.printStackTrace();
 			}
 		}
+
+		public void delete(Database database) {
+			// TODO Auto-generated method stub
+			
+		}
 }

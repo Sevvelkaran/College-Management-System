@@ -1,5 +1,6 @@
 package Controller;
 
+import Model.Class;
 import Model.Database;
 import Model.Operation;
 import Model.Student;
@@ -29,7 +30,7 @@ public class CreateStudent implements Operation {
 		System.out.println("Enter Class Id (-1 to show all classes");
 		int classID = scanner.nextInt();
 		
-		while(class ID < 0) {
+		while(classID < 0) {
 			
 			new ReadClasses().oper(database, scanner);
 			System.out.println("Enter Class Id (-1 to show all classes");

@@ -10,13 +10,12 @@ import java.util.Scanner;
 
 public class UpdateEmployee implements Operation {
 
-		@Override
 		public void oper(Database database,Scanner scanner) {
 		
 				System.out.println("Enter user ID(-1 to show all employees):");
 				int userID=scanner.nextInt();
 				while(userID<0) {
-				   new ShowAllEmployees().oper(database,scanner);
+				   new ReadEmployees().oper(database,scanner);
 				   System.out.println("Enter user ID(-1 to show all employees):");
 				   userID=scanner.nextInt();
 			}
@@ -66,13 +65,19 @@ public class UpdateEmployee implements Operation {
 			int deptID=scanner.nextInt();
 			if(deptID!=-1) {
 				while(deptID==-2){
-					new ShowAllDepartments().oper(database,scanner);
+					new ReadDepartments().oper(database,scanner);
 					deptID=scanner.nextInt();
 				}
 				employee.setDepartment(new Department(deptID,database));
 			}
 			employee.update(database);
 }
+
+		@Override
+		public void oper(Database database) {
+			// TODO Auto-generated method stub
+			
+		}
 			
 }
 

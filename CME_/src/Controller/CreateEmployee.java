@@ -30,7 +30,7 @@ public class CreateEmployee implements Operation {
         System.out.println("Enter Department ID (-1 to show all departments):");
         int deptID = scanner.nextInt();
         
-        while (deptID < 0 ){
+        while (deptID == -1 ){
         	new ReadDepartments().oper(database,scanner) ;
         	System.out.println("Enter Department ID (-1 to show all departments):");
         	deptID = scanner.nextInt();
@@ -51,7 +51,7 @@ public class CreateEmployee implements Operation {
         }
         e.setPassword(password);
     
-        	ArrayList<Employee> employees =  new ShowAllEmployees().getAllEmployees(database);
+        	ArrayList<Employee> employees =  new ReadEmployees().getAllEmployees(database);
         	int ID = 0;
         	if (employees.size()!= 0 ) {
         		ID = employees.get(employees.size()-1).getID()+1;
@@ -60,5 +60,11 @@ public class CreateEmployee implements Operation {
         
         	e.create(database);
 
-        }	 
+        }
+
+	@Override
+	public void oper(Database database) {
+		// TODO Auto-generated method stub
+		
+	}	 
 }

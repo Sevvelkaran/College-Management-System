@@ -13,7 +13,7 @@ public class UpdateDepartment implements Operation {
         System.out.println("Enter Department ID (-1 to show all departments):");
         int ID = scanner.nextInt();
         while (ID<0) {
-            new ShowAllDepartments().oper(database, scanner);
+            new ReadDepartments().oper(database, scanner);
             System.out.println("Enter Department ID (-1 to show all departments):");
             ID = scanner.nextInt();
         }

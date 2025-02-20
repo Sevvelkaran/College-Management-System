@@ -26,7 +26,7 @@ public class ReadDepartments  implements Operation{
 				ResultSet rs = database.getStatement().executeQuery(select);
 				while(rs.next()) {
 					Department d = new Department();
-					d.setId(rs.getInt("ID"));
+					d.setID(rs.getInt("ID"));
 					d.setName(rs.getString("Name"));
 					departments.add(d);
 				}

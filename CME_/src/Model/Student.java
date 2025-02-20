@@ -52,4 +52,9 @@ public class Student {
 	    public void setClass(Class c) {
 	    	this.c=c;
 	    }
+
+		public void create(Database database) {
+			// TODO Auto-generated method stub
+			
+		}
 }

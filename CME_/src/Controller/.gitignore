@@ -10,3 +10,5 @@
 /DeleteEmployee.class
 /UpdateDepartment.class
 /ReadClasses.class
+/CreateDepartment.class
+/DeleteDepartment.class
