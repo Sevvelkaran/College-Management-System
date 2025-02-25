@@ -1,4 +1,8 @@
 package Model;
+
+import java.sql.ResultSet;
+import java.sql.SQLException;
+
 public class Student {
 	private int ID;
 	private String firstName;
@@ -7,8 +11,25 @@ public class Student {
 	private String phoneNumber;
 	private String birthDate;
 	private Model.Class c;
+	private String password;
 	
 	public Student() {}
+	public Student(int ID, Database database) {
+	    this.ID = ID;
+	    String select = "SELECT * FROM students WHERE ID = " + ID + ";";
+	    try {
+	        ResultSet rs = database.getStatement().executeQuery(select);
+	        setFirstName(rs.getString("FirstName"));
+	        setLastName(rs.getString("LastName"));
+	        setEmail(rs.getString("Email"));
+	        setPhoneNumber(rs.getString("PhoneNumber"));
+	        setBirthDate(rs.getString("BirthDate"));
+	        setPassword(rs.getString("Password"));
+	        setClass(new Class(rs.getInt("Class"), database));
+	    } catch (SQLException e) {
+	       e.printStackTrace();
+	    }
+	}
 	
 	    public int getID(){
 	    	return ID;
@@ -52,9 +73,54 @@ public class Student {
 	    public void setClass(Class c) {
 	    	this.c=c;
 	    }
-
-		public void create(Database database) {
+public String getPassword() {
+	return password;
+}
+public void setPassword(String password) {
+	this.password = password;
+}
+public void print() {
+	System.out.println("ID:\t\t" + getID());
+	System.out.println("Name:\t\t" + getFirstName() + " " + getLastName());
+	System.out.println("Email:\t\t" + getEmail());
+	System.out.println("Phone Number:\t" + getPhoneNumber());
+	System.out.println("Birth Date:\t" + getBirthDate());
+	System.out.println("Class:\t\t" + c.getName());
+	System.out.println("______________________________________\n");
+}
+		
+public void create(Database database) {
 			// TODO Auto-generated method stub
-			
+			 String insert = "INSERT INTO students(ID, FirstName, LastName, Email,"
+				        + " PhoneNumber, BirthDate, ClassID, Password) VALUES "
+				        + "(" + ID + ", '" + firstName + "', '" + lastName + "', '" + email + "', '"
+				        + phoneNumber + "', '" + birthDate + "', '" + c.getID() + "', '" + password + "');";
+		
+		try {
+			database.getStatement().execute(insert);
+			System.out.println("Student added successfully");
 		}
+		catch(SQLException e) {
+			e.printStackTrace();
+		}
+}
+public void update(Database database) {
+    String update = "UPDATE students SET FirstName='" + firstName + "',"
+        + "LastName='" + lastName + "', Email='" + email + "',"
+        + "PhoneNumber='" + phoneNumber + "', BirthDate='" + birthDate + "',"
+        + "Class=" + c.getID() + ", Password='" + password + "' "
+        + "WHERE ID=" + ID + ";";
+
+    try {
+        database.getStatement().execute(update);
+        System.out.println("Student updated successfully");
+    } catch (SQLException e) {
+        e.printStackTrace();
+    }
+}
+
+
+
+
+
 }

@@ -38,7 +38,19 @@ public class CreateStudent implements Operation {
 		}
 		
 		s.setClass(new Class(classID, database));
-		
+		System.out.println("Enter Password:");
+		String password = scanner.next();
+		System.out.println("Confirm Password:");
+		String confirmPassword = scanner.next();
+		while(!password.equals(confirmPassword)) {
+			System.out.println("Password doesn't match");
+			s.setClass(new Class(classID, database));
+			System.out.println("Enter Password:");
+			 password = scanner.next();
+			System.out.println("Confirm Password:");
+			 confirmPassword = scanner.next();
+		}
+		s.setPassword(password);
 		s.create(database);
 		
 	}

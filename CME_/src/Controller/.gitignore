@@ -12,3 +12,5 @@
 /ReadClasses.class
 /CreateDepartment.class
 /DeleteDepartment.class
+/ReadStudents.class
+/UpdateStudent.class
