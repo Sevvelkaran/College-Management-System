@@ -19,6 +19,7 @@ public class Student {
 	    String select = "SELECT * FROM students WHERE ID = " + ID + ";";
 	    try {
 	        ResultSet rs = database.getStatement().executeQuery(select);
+	        rs.next();
 	        setFirstName(rs.getString("FirstName"));
 	        setLastName(rs.getString("LastName"));
 	        setEmail(rs.getString("Email"));
@@ -30,7 +31,9 @@ public class Student {
 	       e.printStackTrace();
 	    }
 	}
-	
+	    public Student(int ID) {
+	    	this.ID=ID;
+	    }
 	    public int getID(){
 	    	return ID;
 	    }
@@ -118,9 +121,14 @@ public void update(Database database) {
         e.printStackTrace();
     }
 }
-
-
-
-
-
+public void delete(Database database) {
+    String delete="DELETE FROM 'STUDENTS' WHERE 'ID' = "+ID+";";
+    try {
+    	database.getStatement().execute(delete);
+        System.out.println("Student deleted successfully");
+    } catch (SQLException e) {
+        e.printStackTrace();
+    }
 }
+}
+   

@@ -48,8 +48,9 @@ public class Department {
 			System.out.println("_____________");
 		}
 		public void create(Database database) {
-			String insert="INSERT INTO' departments'('ID','Name')"
-		                  +"VALUES('"+getID()+"','"+getName()+"');";
+			String insert="INSERT INTO 'departments'('ID','Name')"+
+		                  "VALUES('"+getID()+"','"+getName()+"');";
+			
 			try {
 				database.getStatement().execute(insert);
 				System.out.println("Department created successfully");

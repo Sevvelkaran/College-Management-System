@@ -3,12 +3,13 @@ import java.util.*;
 public class Course {
 	
 	private int ID;
-	private String title;
+	private String name;
 	private Class c;
 	private String description;
 	private int limit;
 	private ArrayList<Student> students;
 	private Employee prof;
+	private Department dept;
 	
 	public Course () {}
 	
@@ -18,11 +19,11 @@ public class Course {
 	public void setID(int ID) {
 		this.ID=ID;
 	}
-	public String getTitle() {
-		return title;
+	public String getName() {
+		return name;
 	}
-	public void setID(String title) {
-		this.title=title;
+	public void setName(String name) {
+		this.name=name;
 	}
 	
 	public Class getCurrentClass() {
@@ -41,7 +42,7 @@ public class Course {
 		return limit;
 		
 	}
-	public void setLimt(int limit) {
+	public void setLimit(int limit) {
 		this.limit=limit;
 	}
 	public ArrayList<Student> getStudents(){
@@ -55,5 +56,25 @@ public class Course {
 	}
 	public void setProf(Employee prof) {
 		this.prof=prof;
+	}
+	public Department getDepartment() {
+		return dept;
+	}
+	public void setDepartment(Department dept) {
+		this.dept=dept;
+	}
+	public void print() {
+		System.out.println("ID:\t\t"+getID());
+		System.out.println("Name:\t\t"+getName());
+		System.out.println("Class:\t\t"+getCurrentClass().getName());
+		System.out.println("Description:\t\t"+getDescription());
+		System.out.println("Limit:\t\t"+getLimit());
+		System.out.println("Prof:\t\tDr."+getProf().getFirstName()+" "+getProf().getLastName());
+		System.out.println("Department:\t"+getDepartment().getName());
+		System.out.println("______________________");
+	}
+	public void create(Database database) {
+		String insert="";
+		String create="";
 	}
 }

@@ -12,6 +12,13 @@ public class CreateStudent implements Operation {
 	public void oper(Database database, Scanner scanner) {
 		Student s = new Student();
 		
+		ArrayList<Student> students=new ReadStudents().getAllStudents(database);
+		int ID=0;
+		if(students.size()!=0) {
+			ID=students.get(students.size()-1).getID()+1;		
+		}
+		s.setID(ID);
+		
 		System.out.println("Enter First Name : ");
 		s.setFirstName(scanner.next());
 		
