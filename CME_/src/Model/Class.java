@@ -1,5 +1,6 @@
 package Model;
 
+import java.sql.ResultSet;
 import java.sql.SQLException;
 
 public class Class {
@@ -11,7 +12,18 @@ public class Class {
 	}
 	
 	public Class(int ID,Database database) {
-		
+		this.ID=ID;
+		String select=SELECT *FROM 'classes' WHERE 'ID' = "+ID+";";
+	    try {
+	    	ResultSet rs=database.getStatement().executeQuery(select);
+	    	rs.next();
+	    	setName(rs.getString("Name"));
+	    }catch(SQLException e) {
+	 		e.printStackTrace();
+	 	}
+	}
+	public class(int ID) {
+		this.ID=ID;
 	}
 	
 	public int getID() {
