@@ -19,18 +19,22 @@ public class Student {
 	    String select = "SELECT * FROM students WHERE ID = " + ID + ";";
 	    try {
 	        ResultSet rs = database.getStatement().executeQuery(select);
+	        rs.next();
 	        setFirstName(rs.getString("FirstName"));
 	        setLastName(rs.getString("LastName"));
 	        setEmail(rs.getString("Email"));
 	        setPhoneNumber(rs.getString("PhoneNumber"));
 	        setBirthDate(rs.getString("BirthDate"));
 	        setPassword(rs.getString("Password"));
-	        setClass(new Class(rs.getInt("Class"), database));
+	        setClass(new Class(rs.getInt("ClassID"), database));
+
 	    } catch (SQLException e) {
 	       e.printStackTrace();
 	    }
 	}
-	
+	public Student(int ID) {
+		this.ID = ID;
+	}
 	    public int getID(){
 	    	return ID;
 	    }
@@ -108,12 +112,21 @@ public void update(Database database) {
     String update = "UPDATE students SET FirstName='" + firstName + "',"
         + "LastName='" + lastName + "', Email='" + email + "',"
         + "PhoneNumber='" + phoneNumber + "', BirthDate='" + birthDate + "',"
-        + "Class=" + c.getID() + ", Password='" + password + "' "
+        + "ClassID=" + c.getID() + ", Password='" + password + "' "
         + "WHERE ID=" + ID + ";";
 
     try {
         database.getStatement().execute(update);
         System.out.println("Student updated successfully");
+    } catch (SQLException e) {
+        e.printStackTrace();
+    }
+}
+public void delete(Database database) {
+    String delete = "DELETE FROM students WHERE ID = " + ID + " ;";
+    try {
+        database.getStatement().execute(delete);
+        System.out.println("Student deleted successfully");
     } catch (SQLException e) {
         e.printStackTrace();
     }

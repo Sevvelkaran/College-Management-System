@@ -15,6 +15,9 @@ public class CreateEmployee implements Operation {
     public void oper(Database database, Scanner scanner) {
     	
     	Employee e=new Employee();
+      	
+        System.out.println("Enter User ID:");
+        e.setID(scanner.nextInt());
         System.out.println("Enter First Name:");
         e.setFirstName(scanner.next());
         System.out.println("Enter Last Name:");

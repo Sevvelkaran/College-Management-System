@@ -18,13 +18,14 @@ public class Employee {
     
     public Employee(int ID,Database database) {
     	try {
-    		setID(ID);
-    		String select="SELECT 'ID'.'FirstName','LastName','Email','PhoneNumber',"
-    	     +"'BirthDate','Salary','Department','Password'"+"FROM 'employees' WHERE 'ID'="+getID()+";";
+    		
+    		String select="SELECT ID, FirstName, LastName, Email, PhoneNumber, "
+    			     +"BirthDate, Salary, Department, Password FROM employees WHERE ID="+getID()+";";
+
     	
 			ResultSet rs=database.getStatement().executeQuery(select);
 			rs.next();
-			
+			setID(rs.getInt("ID"));
 			setFirstName(rs.getString("FirstName"));
 			setLastName(rs.getString("LastName"));
 			setEmail(rs.getString("Email"));
@@ -96,7 +97,7 @@ public class Employee {
     public void update(Database database) {
     	try {
 
-    		String update = "UPDATE 'employees' SET 'FirstName'='"+getFirstName()+
+    		String update = "UPDATE 'employees' SET 'ID'='"+getID()+"','FirstName'='"+getFirstName()+
     		"','LastName'='"+getLastName()+"','Email'='"+getEmail()+
     		"','PhoneNumber'='"+getPhoneNumber()+"','BirthDate'='"+getBirthDate()+
     		"','Salary'='"+getSalary()+"','Department'='"+getDepartment().getID()+
@@ -109,7 +110,8 @@ public class Employee {
     		}
     }
     public void print() {
-    	System.out.println("ID:\t\t");
+    	System.out.println("ID:\t\t"+getID());
+ 
     	System.out.println("Name:\t\t"+getFirstName()+" "+getLastName());
     	System.out.println("Email:\t\t"+getEmail());
     	System.out.println("Phone Number:\t"+getPhoneNumber());

@@ -22,6 +22,7 @@ public class UpdateEmployee implements Operation {
 	
 			Employee employee=new Employee(userID,database);
 			
+			
 			System.out.println("Enter First Name(-1 to keep "+employee.getFirstName()+"):");
 			String firstName=scanner.next();
 			if(!firstName.equals("-1"))employee.setFirstName(firstName);

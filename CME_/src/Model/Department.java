@@ -16,7 +16,8 @@ public class Department {
 		
 	public Department(int ID, Database database) {
 		try {
-			String select="SELECT *FROM 'departments'WHERE 'ID'="+ID+";";
+			String select = "SELECT * FROM departments WHERE ID = " + ID + ";";
+
 			ResultSet rs=database.getStatement().executeQuery(select);
 			rs.next();
 			setID(rs.getInt("ID"));

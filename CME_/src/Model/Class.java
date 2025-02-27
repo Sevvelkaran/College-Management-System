@@ -1,5 +1,6 @@
 package Model;
 
+import java.sql.ResultSet;
 import java.sql.SQLException;
 
 public class Class {
@@ -10,8 +11,19 @@ public class Class {
 	public Class() {
 	}
 	
-	public Class(int ID,Database database) {
-		
+	public Class(int ID, Database database) {
+	    this.ID = ID;
+	    String select = "SELECT * FROM classes WHERE ID = " + ID + " ;";
+	    try {
+	        ResultSet rs = database.getStatement().executeQuery(select);
+	        rs.next();
+	        setName(rs.getString("Name"));
+	    } catch (SQLException e) {
+	        e.printStackTrace();
+	    }
+	}
+	public Class(int ID) {
+		this.ID = ID;
 	}
 	
 	public int getID() {
@@ -36,7 +48,8 @@ public class Class {
 	}
 	
 	public void create(Database database) {
-		String insert="INSERT INTO 'classes'('ID','Name') VALUES"+"('"+ID+"','"+name+"');";
+		String insert = "INSERT INTO classes (ID, Name) VALUES ('" + ID + "', '" + name + "');";
+
 		
 		try {
 			database.getStatement().execute(insert);
@@ -46,9 +59,10 @@ public class Class {
 			e.printStackTrace();
 		}
     }
+	
     public void update(Database database) {
-	      String update="UPDATE 'classes' SET 'Name'="+getName()+"' "
-                   +"WHERE 'ID' ="+getID()+";";
+    	String update="UPDATE classes SET Name='" + getName() + "' WHERE ID=" + getID();
+
 	     try {
 	    	 database.getStatement().execute(update);
 	 		System.out.println("class updated successfully");
@@ -58,7 +72,8 @@ public class Class {
 	 	}
 	}
     public void delete(Database database) {
-	      String delete="DELETE FROM 'classes' WHERE 'ID' = "+getID()+";"; 
+    	String delete = "DELETE FROM classes WHERE ID = " + getID();
+
 	     try {
 	    	 database.getStatement().execute(delete);
 	 		System.out.println("class deleted successfully");
