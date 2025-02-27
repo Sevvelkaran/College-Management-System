@@ -21,7 +21,6 @@ c.delete(database);
 		
 	}
 
-	@Override
 	public void oper(Database database) {
 		// TODO Auto-generated method stub
 		

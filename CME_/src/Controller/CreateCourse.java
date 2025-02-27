@@ -11,7 +11,7 @@ import Model.Operation;
 
 public class CreateCourse implements Operation {
 
-
+	@Override
 	public void oper(Database database,Scanner scanner) {
 		Course c = new Course();
 		int ID = 0;
@@ -60,10 +60,5 @@ public class CreateCourse implements Operation {
 		c.create(database);
 	}
 
-	@Override
-	public void oper(Database database) {
-		// TODO Auto-generated method stub
-		
-	}
-
+	
 }

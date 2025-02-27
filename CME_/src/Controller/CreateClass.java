@@ -7,6 +7,7 @@ import Model.Database;
 import Model.Operation;
 
 public class CreateClass implements Operation {
+	@Override
 	public void oper(Database database,Scanner scanner)
 	{
 		System.out.println("Enter Class Name:");
@@ -23,9 +24,5 @@ public class CreateClass implements Operation {
 		c.create(database);
 		
 	}
-
-	public void oper(Database database) {
-		// TODO Auto-generated method stub
-		
-	}
+    
 }

@@ -24,7 +24,6 @@ public class UpdateClass implements Operation {
     c.update(database);
     }
 
-	@Override
 	public void oper(Database database) {
 		// TODO Auto-generated method stub
 		

@@ -1,4 +1,6 @@
 package Model;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.*;
 public class Course {
 	
@@ -12,6 +14,45 @@ public class Course {
 	private Department dept;
 	
 	public Course () {}
+	
+	public Course(int ID,Database database) {
+		setID(ID);
+		String select1="SELECT *FROM 'courses' WHERE 'ID'="+ID+";";
+		String select2="SELECT *FROM 'course"+ID+"';";
+		try {
+			ResultSet rs1=database.getStatement().executeQuery(select1);
+			rs1.next();
+			setName(rs1.getString("Name"));
+			rs1.next();
+			int classID= rs1.getInt("Class");
+			setDescription(rs1.getString("Description"));
+			setLimit(rs1.getInt("Lim"));
+			int profID=rs1.getInt("Prof");
+			int deptID= rs1.getInt("Department");
+			
+			setClass(new Class(classID, database));
+			setProf(new Employee (profID, database));
+			setDepartment(new Department (deptID, database));
+
+			ResultSet rs2=database.getStatement().executeQuery(select2);
+			ArrayList<Integer> studentsIDs=new ArrayList<>();
+			ArrayList<Student> students=new ArrayList<>();
+
+			while (rs2.next()) {
+			     studentsIDs.add(rs2.getInt("Student"));
+			}
+			for (Integer i:studentsIDs) {
+			      students.add(new Student(i, database)); 
+   		        	setStudents (students);
+			} 
+		}catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}			
+	
+	public Course(int ID) {
+		this.ID=ID;
+	}
 	
 	public int getID() {
 		return ID;
@@ -79,6 +120,42 @@ public class Course {
 				"', '" + getCurrentClass().getID() + "','" + getDescription() + "','" + 
 				getLimit() + "','" + getProf().getID() + "','" + getDepartment().getID() 
 				+ "');";
-				String create = "";
+				String create = "CREATE TABLE 'Course"+getID()+"'(Student);";
+				 try {
+			    	 database.getStatement().execute(insert);
+			    	 database.getStatement().execute(create);
+			    	 
+			 		System.out.println("Course created successfully");
+			 	}
+			 	catch(SQLException e) {
+			 		e.printStackTrace();
+			 	}	
+	}
+	public void update(Database database) {
+		String update="UPDATE 'courses' SET 'Name'='"+getName()+"',"+"'Class'='"+getCurrentClass().getID()+"',"
+	                   +"'Description'='"+getDescription()+"','Lim'='"+getLimit()+"'"
+	                   		+ ",'Prof'='"+getProf().getID()+"',"+"'Department'='"+getDepartment().getID()+"' "
+	                   		+"WHERE 'ID'="+getID()+";";
+		try {
+	    	 database.getStatement().execute(update);
+	    	 
+	 		System.out.println("Course updated successfully");
+	 	}
+	 	catch(SQLException e) {
+	 		e.printStackTrace();
+	 	}
+	}
+	public void delete(Database database) {
+		String delete="	DELETE FROM 'courses' WHERE 'ID'="+getID()+";";
+	    String drop="DROP TABLE 'Course "+getID()+";";
+		try {
+	    	 database.getStatement().execute(delete);
+	    	 database.getStatement().execute(drop);
+	    	 
+	 		System.out.println("Course deleted successfully");
+	 	}
+	 	catch(SQLException e) {
+	 		e.printStackTrace();
+	 	}
 	}
 }

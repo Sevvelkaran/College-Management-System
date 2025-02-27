@@ -2,6 +2,28 @@ package Model;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.Scanner;
+
+import Controller.CreateClass;
+import Controller.CreateCourse;
+import Controller.CreateDepartment;
+import Controller.CreateEmployee;
+import Controller.CreateStudent;
+import Controller.DeleteClass;
+import Controller.DeleteCourse;
+import Controller.DeleteDepartment;
+import Controller.DeleteEmployee;
+import Controller.DeleteStudent;
+import Controller.ReadClasses;
+import Controller.ReadCourses;
+import Controller.ReadDepartments;
+import Controller.ReadEmployees;
+import Controller.ReadStudents;
+import Controller.UpdateClass;
+import Controller.UpdateCourse;
+import Controller.UpdateDepartment;
+import Controller.UpdateEmployee;
+import Controller.UpdateStudent;
 
 public class Employee {
     private int ID;
@@ -135,6 +157,63 @@ public class Employee {
         }catch(SQLException e) {
         	e.printStackTrace();
         } 
+    	
+    }
+    private Operation[] managerOperations = new Operation[] {
+        new CreateDepartment(),
+        new ReadDepartments(),
+        new UpdateDepartment(),
+        new DeleteDepartment(),
+        new CreateClass(),
+        new ReadClasses(),
+        new UpdateClass(),
+        new DeleteClass(),
+        new CreateCourse(),
+        new ReadCourses(),
+        new UpdateCourse(),
+        new DeleteCourse(),
+        new CreateEmployee(),
+        new ReadEmployees(),
+        new UpdateEmployee(),
+        new DeleteEmployee(),
+        new CreateStudent(),
+        new ReadStudents(),
+        new UpdateStudent(),
+        new DeleteStudent()
+
+        };
+    
+
+    public void showList (Database database, Scanner scanner,int ID) {
+    	if (department.getName().equals("Management")) {
+    		System.out.println("Welcome to University Management System");
+    	    System.out.println("01. Add new Department");
+    	    System.out.println("02. Show all Departments");
+    	    System.out.println("03. Edit Department");
+    	    System.out.println("04. Delete Department");
+    	    System.out.println("05. Add New Class");
+    	    System.out.println("06. Edit Class");
+    	    System.out.println("07. Delete Class");
+    	    System.out.println("08. Add new Course");
+    	    System.out.println("09. Show all Courses");
+    	    System.out.println("10. Edit Course");
+    	    System.out.println("11. Delete Course");
+    	    System.out.println("12. Add new Employee");
+    	    System.out.println("13. Show all Employees");
+    	    System.out.println("14. Edit Employee");
+    	    System.out.println("15. Delete Employee");
+    	    System.out.println("16. Add new Student");
+    	    System.out.println("17. Show all Students");
+    	    System.out.println("18. Edit Student");
+    	    System.out.println("19. Delete Student");
+    	    
+    	    int selected=scanner.nextInt();
+    	    managerOperations[selected-1].oper(database,scanner);
+    	    showList(database,scanner, selected);//changed code
+    	}
+        else {
+    		
+    	}
     	
     }
 }
