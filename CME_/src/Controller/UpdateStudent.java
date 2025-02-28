@@ -68,10 +68,6 @@ public class UpdateStudent implements Operation {
 		
 	}
 
-	@Override
-	public void oper(Database database) {
-		// TODO Auto-generated method stub
-		
-	}
+	
 
 }

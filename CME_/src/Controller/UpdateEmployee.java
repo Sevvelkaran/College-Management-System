@@ -74,11 +74,7 @@ public class UpdateEmployee implements Operation {
 			employee.update(database);
 }
 
-		@Override
-		public void oper(Database database) {
-			// TODO Auto-generated method stub
-			
-		}
+		
 			
 }
 

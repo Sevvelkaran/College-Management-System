@@ -13,11 +13,7 @@ public class ReadClasses implements Operation{
 		}
 	}
 
-	@Override
-	public void oper(Database database) {
-		// TODO Auto-generated method stub
-		
-	}
+	
 
 	public ArrayList<Model.Class> getAllClasses(Database database) {
 	    ArrayList<Model.Class> classes = new ArrayList<>();

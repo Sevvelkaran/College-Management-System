@@ -20,9 +20,5 @@ public class DeleteStudent implements Operation {
         s.delete(database);
     }
 
-	@Override
-	public void oper(Database database) {
-		// TODO Auto-generated method stub
-		
-	}
+	
 }

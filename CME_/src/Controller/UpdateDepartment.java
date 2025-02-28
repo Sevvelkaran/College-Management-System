@@ -26,9 +26,4 @@ public class UpdateDepartment implements Operation {
         department.update(database);
     }
 
-	@Override
-	public void oper(Database database) {
-		// TODO Auto-generated method stub
-		
-	}
 }

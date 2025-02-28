@@ -24,9 +24,5 @@ public class DeleteDepartment implements Operation {
 	department.delete(database);
    }
 
-	@Override
-	public void oper(Database database) {
-		// TODO Auto-generated method stub
-		
-	}
+	
 }
