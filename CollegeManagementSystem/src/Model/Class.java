@@ -82,4 +82,9 @@ public class Class {
 		}
 	}
 
+	 static void forName(String string) {
+		// TODO Auto-generated method stub
+		
+	}
+
 }
