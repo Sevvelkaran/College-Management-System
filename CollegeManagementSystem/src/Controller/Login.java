@@ -26,8 +26,8 @@ public class Login {
 		boolean loggedIn = false;
 		
 		if (selected==1) {
-			String select = "SELECT `ID`, `Email`, `Password` "
-					+ "FROM `employees` WHERE `Email` = '"+email+"' ;";
+			String select = "SELECT ID, Email, Password "
+					+ "FROM employees WHERE Email = '"+email+"' ;";
 			try {
 				ResultSet rs = database.getStatement().executeQuery(select);
 				while (rs.next()) {
@@ -42,8 +42,8 @@ public class Login {
 				e.printStackTrace();
 			}
 		} else {
-			String select = "SELECT `ID`, `Email`, `Password` "
-					+ "FROM `students` WHERE `Email` = '"+email+"' ;";
+			String select = "SELECT ID, Email, Password "
+					+ "FROM students WHERE Email = '"+email+"' ;";
 			try {
 				ResultSet rs = database.getStatement().executeQuery(select);
 				while (rs.next()) {
