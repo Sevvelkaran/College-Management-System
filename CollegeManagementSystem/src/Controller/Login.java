@@ -1,5 +1,7 @@
 package Controller;
 
+import java.io.File;
+import java.io.FileNotFoundException;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.Scanner;
@@ -10,9 +12,12 @@ import Model.Student;
 
 public class Login {
 	
-	public static void main(String[] args) {
-		Scanner scanner = new Scanner(System.in);
-		Database database = new Database();
+	public static void main(String[] args) throws FileNotFoundException {
+
+		File file = new File("input.txt");
+	
+    Scanner scanner = new Scanner(file);
+    Database database = new Database();
 		System.out.println("Welcome to University Management System");
 		System.out.println("1. Staff");
 		System.out.println("2. Student");
